@@ -70,23 +70,43 @@
             </plugin>
             <plugin>
                 <groupId>com.spotify</groupId>
-                <artifactId>dockerfile-maven-plugin</artifactId>
-                <version>1.4.13</version>
-                <executions>
-                    <execution>
-                        <id>default</id>
-                        <goals>
-                            <goal>build</goal>
-                            <goal>push</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>1.0.0</version>
                 <configuration>
-                    <repository>${docker.image.prefix}/${project.artifactId}</repository>
-                    <tag>${project.version}</tag>
-                    <buildArgs>
-                        <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
-                    </buildArgs>
+                    <!--镜像名称-->
+                    <imageName>xiaochen/springboot</imageName>
+                    <!--指定dockerfile路径-->
+                    <!--<dockerDirectory>${project.basedir}/src/main/resources</dockerDirectory>-->
+                    <!--指定标签-->
+                    <imageTags>
+                        <imageTag>latest</imageTag>
+                    </imageTags>
+                    <!--远程仓库地址-->
+<!--                    <registryUrl>10.211.55.4:5000</registryUrl>-->
+                    <pushImage>false</pushImage>
+                    <!--基础镜像jdk1.8-->
+                    <baseImage>openjdk:8-jdk-alpine</baseImage>
+                    <!--制作者提供本人信息-->
+                    <maintainer>niceyoo apkdream@163.com</maintainer>
+                    <!--切换到ROOT目录-->
+                    <workdir>/ROOT</workdir>
+                    <exposes>
+                        <expose>8012</expose>
+                    </exposes>
+                    <cmd>["java","-version"]</cmd>
+                    <entryPoint>["java","-jar","${project.build.finalName}.jar"]</entryPoint>
+                    <!--指定远程docker地址-->
+                    <dockerHost>http://192.168.56.10:2375</dockerHost>
+                    <!--这里是复制jar包到docker容器指定目录配置-->
+                    <resources>
+                        <resource>
+                            <targetPath>/ROOT</targetPath>
+                            <!--指定需要复制的根目录，${project.build.directory}表示target目录-->
+                            <directory>${project.build.directory}</directory>
+                            <!--用于指定需要复制的文件，${project.build.finalName}.jar表示打包后的jar包文件-->
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
                 </configuration>
             </plugin>
 

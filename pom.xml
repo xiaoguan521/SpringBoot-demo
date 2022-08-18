@@ -27,10 +27,10 @@
             <artifactId>jsch</artifactId>
             <version>0.1.55</version>
         </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-jdbc</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework</groupId>-->
+<!--            <artifactId>spring-jdbc</artifactId>-->
+<!--        </dependency>-->
 
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -42,11 +42,11 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>com.shineyue.www.base</groupId>
-            <artifactId>sdk</artifactId>
-            <version>3.0.1-RELEASE</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.shineyue.www.base</groupId>-->
+<!--            <artifactId>sdk</artifactId>-->
+<!--            <version>3.0.1-RELEASE</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>com.spotify</groupId>
             <artifactId>dockerfile-maven-plugin</artifactId>

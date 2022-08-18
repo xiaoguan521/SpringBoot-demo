@@ -1,0 +1,12 @@
+server:
+    port: 9000
+sshconfig:
+    local-port: 8848
+    mysql:
+        remote-server: 10.100.101.79
+    remote-port: 8848
+    ssh:
+        password: VsUn76@Atwasoft2020
+        remote-port: 22
+        remote-server: 10.98.1.10
+        user: atwa
